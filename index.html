@@ -79,7 +79,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script type="text/javascript">
       var m = moment();
-      var hourEl = $('.hour');
+      var textareaEl = $('textarea');
 
       $('#currentDay').text(m.format("dddd, MMMM Do"))
       $('.event').attr('data-time', 'past')
@@ -274,8 +274,18 @@
         $('.event').attr('data-time', 'past')
         $('.event').addClass('past')
       }
+
+      $('.saveBtn').on('click', function(){
+        var savedText = textareaEl.val();
+
+        localStorage.setItem('savedText', savedText);
+      })
       
-      
+      function renderSavedText(){
+        localStorage.getItem('savedText')
+
+      }
+
       </script>
   </body>
 </html>
